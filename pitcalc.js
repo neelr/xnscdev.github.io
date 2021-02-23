@@ -9,18 +9,22 @@ const pmu = [1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.75, 2, 2.5, 3, 4, 5, 6, 7, 8, 9, 10,
 // DOM elements
 const _cp = document.getElementById("cp");
 const _cl = document.getElementById("cl");
+const _lb = document.getElementById("lb");
 const _xnl = document.getElementById("xnl");
 const _xb = document.getElementById("xb");
+const _fp = document.getElementById("fp");
 const _tx = document.getElementById("tx");
 const _px = document.getElementById("px");
 const _nx = document.getElementById("nx");
+const _pp = document.getElementById("pp");
 
 // User inputs
-let cp = 0, cl = 1, xnl = 15;
+let cp = 0, cl = 1, xnl = 15, fp = false;
 
 _cp.oninput = () => { cp = _cp.value; update(); }
 _cl.oninput = () => { cl = _cl.value; update(); }
 _xnl.oninput = () => { xnl = _xnl.value; update(); }
+_fp.oninput = () => { fp = _fp.checked; update(); }
 
 function ptx(p) {
     let x = 0;
@@ -36,17 +40,27 @@ function lx(p, l) {
 }
 
 function update() {
+    let ret = false;
     if (xnl > lx(cp, cl)) {
 	_xb.style.display = "block";
-	return;
+	ret = true;
     }
     else
 	_xb.style.display = "none";
+    if (cl < 50 && fp) {
+	_lb.style.display = "block";
+	ret = true;
+    }
+    else
+	_lb.style.display = "none";
+    if (ret)
+	return;
 
     if (cl == 120) {
 	_tx.innerHTML = numfmt(ptx(cp));
 	_px.innerHTML = numfmt(ptx(cp));
 	_nx.innerHTML = 0;
+	_pp.innerHTML = 100;
 	return;
     }
 
@@ -54,8 +68,18 @@ function update() {
     for (let i = 1; i < cl; i++)
 	px += lx(cp, i);
     _px.innerHTML = numfmt(px);
-    _tx.innerHTML = numfmt(ptx(cp - 1) + px);
-    _nx.innerHTML = numfmt(ptx(cp) - ptx (cp - 1) - px);
+    let ppx = ptx(cp - 1);
+    let cpx = ptx(cp);
+    let tx = ppx + px;
+    _tx.innerHTML = numfmt(tx);
+    _nx.innerHTML = numfmt(cpx - tx);
+
+    let rpx = px;
+    if (fp) {
+	for (let i = 1; i < 50; i++)
+	    rpx -= lx(cp, i);
+    }
+    _pp.innerHTML = Math.floor (rpx * 1000000 / (cpx - ppx)) / 10000;
 }
 
 function numfmt(x) {
