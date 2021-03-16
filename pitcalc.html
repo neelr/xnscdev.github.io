@@ -23,11 +23,19 @@
       <div id="xb" class="bad">XP to next level is too large</div><br>
       <input type="checkbox" id="fp"> <label for="fp">Fast pass</label><br><br>
 
-      <h3>Progress</h3>
+      <h3>Prestige Progress</h3>
       Total XP: <span id="tx">0</span><br><br>
       XP this prestige: <span id="px">0</span><br><br>
       XP to next prestige: <span id="nx">65,935</span><br><br>
-      Prestige progress: <span id="pp">0</span>%<br><br>
+      Percent progress to next prestige: <span id="pp">0.0000</span>%<br><br>
+
+      <h3>Level Progress</h3>
+      <label for="sl">Select level:</label>
+      <input type="number" id="sl" min="2" max="120" value="120"><br>
+      <div id="sb" class="bad">Please select a level greater than your current
+	level</div><br>
+      XP to selected level: <span id="nd">65,935</span><br><br>
+      Percent progress to selected level: <span id="np">0.0000</span>%<br><br>
     </div>
     <script type="text/javascript" src="pitcalc.js"></script>
   </body>
