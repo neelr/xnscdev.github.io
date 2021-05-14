@@ -322,4 +322,14 @@ function updateGraph() {
 	    ctx.stroke();
 	}
     }
+
+    // Draw axis numbers
+    ctx.font = "12px Arial";
+    for (let x = -9; x < 10; x++)
+	ctx.fillText(x.toString(), 22 + 40 * (x + 9), 378);
+    for (let y = -9; y < 10; y++) {
+	if (!y)
+	    continue; // 0 already drawn by previous loop
+	ctx.fillText(y.toString(), 382, 18 + 40 * (9 - y));
+    }
 }
