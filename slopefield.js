@@ -273,37 +273,37 @@ function updateGraph() {
     ctx.clearRect(0, 0, graph.width, graph.height);
 
     // Draw grid
-    for (let x = 1; x < 10; x++) {
+    for (let x = 0; x < 19; x++) {
 	ctx.beginPath();
-	if (x == 5)
+	if (x == 9)
 	    ctx.lineWidth = 3;
 	else
 	    ctx.lineWidth = 1;
-	ctx.moveTo(x * 40, 0);
-	ctx.lineTo(x * 40, 400);
+	ctx.moveTo(x * 40 + 20, 0);
+	ctx.lineTo(x * 40 + 20, graph.height);
 	ctx.stroke();
     }
-    for (let y = 1; y < 10; y++) {
+    for (let y = 0; y < 19; y++) {
 	ctx.beginPath();
-	if (y == 5)
+	if (y == 9)
 	    ctx.lineWidth = 2;
 	else
 	    ctx.lineWidth = 1;
-	ctx.moveTo(0, y * 40);
-	ctx.lineTo(400, y * 40);
+	ctx.moveTo(0, y * 40 + 20);
+	ctx.lineTo(graph.width, y * 40 + 20);
 	ctx.stroke();
     }
 
     // Draw slope fields
     ctx.lineWidth = 3;
-    for (let x = -4; x < 5; x++) {
-	for (let y = -4; y < 5; y++) {
+    for (let x = -9; x < 10; x++) {
+	for (let y = -9; y < 10; y++) {
 	    let m = expr.eval(x, y);
 	    ctx.beginPath();
 	    // Work around the differences in numbering for Cartesian
 	    // coordinates vs the canvas coordinates
-	    let bx = 40 * (x + 5);
-	    let by = 40 * (5 - y);
+	    let bx = 40 * (x + 9) + 20;
+	    let by = 40 * (9 - y) + 20;
 	    if (!m) {
 		ctx.moveTo(bx - 15, by);
 		ctx.lineTo(bx + 15, by);
