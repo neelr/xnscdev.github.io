@@ -30,3 +30,24 @@
 .tile img {
     max-width: 220px;
 }
+
+.right {
+    float: right;
+}
+
+.center {
+    text-align: center;
+}
+
+.soltab {
+    margin: 0 auto;
+    text-align: left;
+}
+
+.soltab td {
+    padding: 0 10px;
+}
+
+.soltab td.hspace {
+    min-width: 50px;
+}
