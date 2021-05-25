@@ -1,4 +1,4 @@
-const GROUPS = 6;
+const GROUPS = 7;
 
 const PSL = [
     null,
@@ -7,7 +7,8 @@ const PSL = [
     "(\u221a2, 6)",
     "(1, 0.5)",
     "(0, -e)",
-    "(0, \u03c0/2)"
+    "(0, \u03c0/2)",
+    "(5, 100)"
 ];
 
 $(document).ready(() => {
