@@ -93,12 +93,11 @@ function checkResponses() {
 }
 
 function toggleGroup(el, id) {
-    if (el.innerHTML == "Hide") {
-	el.innerHTML = "Show";
-	$("#tg" + id).css({display: "none"});
-    }
-    else {
-	el.innerHTML = "Hide";
-	$("#tg" + id).css({display: "block"});
-    }
+  if (el.innerHTML == "Show") {
+    el.innerHTML = "Hide";
+    $("#tg" + id).css({ display: "block" });
+  } else {
+    el.innerHTML = "Show";
+    $("#tg" + id).css({ display: "none" });
+  }
 }
