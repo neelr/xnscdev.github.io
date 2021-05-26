@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,400;0,900;1,100;1,900&display=swap");
 #bank {
     background-color: orange;
     overflow-x: scroll;
@@ -29,4 +30,8 @@
 
 .tile img {
     max-width: 220px;
+* {
+  font-family: "Public Sans", sans-serif;
+  margin: 0;
+  padding: 0;
 }
